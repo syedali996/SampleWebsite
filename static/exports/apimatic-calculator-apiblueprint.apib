@@ -1,0 +1,46 @@
+FORMAT: 1A
+HOST: https://examples.apimatic.io/apps/calculator
+
+# APIMATIC Calculator
+Simple calculator API hosted on APIMATIC
+
+# Group Simple Calculator
+
+## By Operation [/{operation}{?x,y}]
+
++ Parameters
+    + operation (enum[string], required)
+
+        The operator to apply on the variables
+
+        + Sample: MULTIPLY
+        + Members
+            + `SUM` - Represents the sum operator
+            + `SUBTRACT` - Represents the subtract operator
+            + `MULTIPLY` - Represents the multiply operator
+            + `DIVIDE` - Represents the divide operator
+
+
+### Calculate [GET]
+Calculates the expression using the specified operation.
++ Parameters
+    + x (number, required)
+
+        The LHS value
+
+        + Sample: 4
+    + y (number, required)
+
+        The RHS value
+
+        + Sample: 5
+
++ Response 200 
+    + Attributes (number)
+
+
+    + Body
+
+            20
+
+

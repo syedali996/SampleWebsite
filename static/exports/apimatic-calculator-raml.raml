@@ -1,0 +1,61 @@
+#%RAML 0.8
+title: APIMATIC Calculator
+version: '1.0'
+documentation:
+- title: APIMATIC Calculator
+  content: Simple calculator API hosted on APIMATIC
+baseUri: https://examples.apimatic.io/apps/calculator
+protocols:
+- HTTPS
+baseUriParameters: {}
+schemas:
+- OperationType: |
+    {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "OperationType",
+      "description": "Possible operators are sum, subtract, multiply, divide",
+      "type": "string",
+      "enum": [
+        "SUM",
+        "SUBTRACT",
+        "MULTIPLY",
+        "DIVIDE"
+      ]
+    }
+/{operation}:
+  uriParameters:
+    operation:
+      description: The operator to apply on the variables
+      example: MULTIPLY
+      required: true
+      displayName: operation
+      enum:
+      - SUM
+      - SUBTRACT
+      - MULTIPLY
+      - DIVIDE
+  get:
+    description: Calculates the expression using the specified operation.
+    queryParameters:
+      x:
+        description: The LHS value
+        type: number
+        example: '4'
+        required: true
+        displayName: x
+      y:
+        description: The RHS value
+        type: number
+        example: '5'
+        required: true
+        displayName: y
+    responses:
+      '200':
+        description: Success
+        body:
+          text/plain:
+            schema: |
+              {
+                "type": "number"
+              }
+            example: '20'

@@ -1,0 +1,42 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_source": "apimatic.transformer",
+  "resources": [
+    {
+      "name": "APIMATIC Calculator",
+      "_type": "workspace",
+      "_id": "wrk_7ccb657d4484474baead50a71d5a0e46",
+      "description": "Simple calculator API hosted on APIMATIC"
+    },
+    {
+      "name": "Simple Calculator",
+      "_type": "request_group",
+      "_id": "fld_c5a064c6dd7b482e98555c090454fffc",
+      "parentId": "wrk_7ccb657d4484474baead50a71d5a0e46",
+      "description": ""
+    },
+    {
+      "name": "Calculate",
+      "method": "GET",
+      "url": "https://examples.apimatic.io/apps/calculator/{operation}",
+      "parameters": [
+        {
+          "name": "x",
+          "value": "4",
+          "disabled": false
+        },
+        {
+          "name": "y",
+          "value": "5",
+          "disabled": false
+        }
+      ],
+      "authentication": {},
+      "_type": "request",
+      "_id": "req_c5d6088bb3c14759bc9df30e291a6b36",
+      "parentId": "fld_c5a064c6dd7b482e98555c090454fffc",
+      "description": "Calculates the expression using the specified operation."
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "swaggerVersion": "1.2",
+  "basePath": "https://examples.apimatic.io/apps/calculator",
+  "resourcePath": "/",
+  "apis": [
+    {
+      "path": "/{operation}",
+      "operations": [
+        {
+          "method": "GET",
+          "summary": "Calculates the expression using the specified operation.",
+          "nickname": "Calculate",
+          "parameters": [
+            {
+              "name": "operation",
+              "description": "The operator to apply on the variables",
+              "paramType": "path",
+              "required": true,
+              "allowMultiple": false,
+              "defaultValue": "",
+              "enum": [
+                "SUM",
+                "SUBTRACT",
+                "MULTIPLY",
+                "DIVIDE"
+              ],
+              "uniqueItems": false,
+              "type": "string"
+            },
+            {
+              "name": "x",
+              "description": "The LHS value",
+              "paramType": "query",
+              "required": true,
+              "allowMultiple": false,
+              "defaultValue": "",
+              "minimum": "",
+              "maximum": "",
+              "uniqueItems": false,
+              "type": "number",
+              "format": "double"
+            },
+            {
+              "name": "y",
+              "description": "The RHS value",
+              "paramType": "query",
+              "required": true,
+              "allowMultiple": false,
+              "defaultValue": "",
+              "minimum": "",
+              "maximum": "",
+              "uniqueItems": false,
+              "type": "number",
+              "format": "double"
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responseMessages": [],
+          "minimum": "",
+          "maximum": "",
+          "uniqueItems": false,
+          "type": "number",
+          "format": "double"
+        }
+      ]
+    }
+  ],
+  "models": {},
+  "authorizations": {},
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ]
+}

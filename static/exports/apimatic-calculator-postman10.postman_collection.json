@@ -1,0 +1,84 @@
+{
+  "id": "a5beffee-bef6-40d6-8e88-02134c743f12",
+  "name": "APIMATIC Calculator",
+  "description": "Simple calculator API hosted on APIMATIC",
+  "order": [],
+  "folders": [
+    {
+      "id": "03facf5a-7429-4e47-8234-eec95cdb01b2",
+      "name": "Simple Calculator",
+      "description": "",
+      "order": [
+        "dc846bab-47df-4c31-8018-31e51e650a85"
+      ],
+      "collection_id": "a5beffee-bef6-40d6-8e88-02134c743f12"
+    }
+  ],
+  "requests": [
+    {
+      "folder": "03facf5a-7429-4e47-8234-eec95cdb01b2",
+      "id": "dc846bab-47df-4c31-8018-31e51e650a85",
+      "name": "Calculate",
+      "dataDisabled": false,
+      "descriptionFormat": "markdown",
+      "description": "Calculates the expression using the specified operation.",
+      "headers": "Accept:text/plain\r\n",
+      "method": "GET",
+      "currentHelper": "",
+      "pathVariables": {
+        "operation": "MULTIPLY"
+      },
+      "url": "https://examples.apimatic.io/apps/calculator/:operation?x=4&y=5",
+      "responses": [
+        {
+          "request": "dc846bab-47df-4c31-8018-31e51e650a85",
+          "id": "12589e69-e012-48e4-92b2-a5a1a21007e6",
+          "name": "Response_200",
+          "responseCode": {
+            "code": 200,
+            "name": "200"
+          },
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "text": "20",
+          "language": "Text",
+          "rawDataType": "text"
+        }
+      ],
+      "collectionId": "a5beffee-bef6-40d6-8e88-02134c743f12",
+      "queryParams": [
+        {
+          "key": "x",
+          "value": "4",
+          "description": "The LHS value"
+        },
+        {
+          "key": "y",
+          "value": "5",
+          "description": "The RHS value"
+        }
+      ],
+      "headerData": [
+        {
+          "key": "Accept",
+          "value": "text/plain"
+        }
+      ],
+      "pathVariableData": [
+        {
+          "key": "operation",
+          "value": "MULTIPLY",
+          "description": "The operator to apply on the variables"
+        }
+      ]
+    }
+  ],
+  "variables": [],
+  "auth": {
+    "type": "noauth"
+  }
+}

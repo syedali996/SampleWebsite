@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:schemas="https://examples.apimatic.io/apps/calculator/schemas" xmlns:wsdl="https://examples.apimatic.io/apps/calculator/wsdl" targetNamespace="https://examples.apimatic.io/apps/calculator/wsdl" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema xmlns:tns="https://examples.apimatic.io/apps/calculator/schemas" targetNamespace="https://examples.apimatic.io/apps/calculator/schemas" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="GET_Calculate_InputMessage" type="schemas:GET_Calculate_InputMessage" />
+      <xs:element name="GET_Calculate_OutputMessage" type="schemas:GET_Calculate_OutputMessage" />
+      <xs:simpleType name="OperationType">
+        <xs:annotation>
+          <xs:documentation>Possible operators are sum, subtract, multiply, divide</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="SUM">
+            <xs:annotation>
+              <xs:documentation>Represents the sum operator</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="SUBTRACT">
+            <xs:annotation>
+              <xs:documentation>Represents the subtract operator</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="MULTIPLY">
+            <xs:annotation>
+              <xs:documentation>Represents the multiply operator</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="DIVIDE">
+            <xs:annotation>
+              <xs:documentation>Represents the divide operator</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:complexType name="GET_Calculate_InputMessage">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="operation" type="schemas:OperationType">
+            <xs:annotation>
+              <xs:documentation>The operator to apply on the variables</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="x" type="xs:double">
+            <xs:annotation>
+              <xs:documentation>The LHS value</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="y" type="xs:double">
+            <xs:annotation>
+              <xs:documentation>The RHS value</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GET_Calculate_OutputMessage">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="response" type="xs:double" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="GET_Calculate_InputMessage">
+    <part name="GET_Calculate_InputMessage" element="schemas:GET_Calculate_InputMessage" />
+  </message>
+  <message name="GET_Calculate_OutputMessage">
+    <part name="GET_Calculate_OutputMessage" element="schemas:GET_Calculate_OutputMessage" />
+  </message>
+  <portType name="APIMATIC_x0020_Calculator_PortType">
+    <operation name="GET_Calculate">
+      <documentation>Calculates the expression using the specified operation.</documentation>
+      <input message="wsdl:GET_Calculate_InputMessage" />
+      <output message="wsdl:GET_Calculate_OutputMessage">
+        <documentation />
+      </output>
+    </operation>
+  </portType>
+  <binding name="APIMATIC_x0020_Calculator_Binding" type="wsdl:APIMATIC_x0020_Calculator_PortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="GET_Calculate">
+      <soap:operation soapAction="GET_Calculate" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input>
+        <soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output>
+        <soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="APIMATIC_x0020_Calculator">
+    <documentation>Simple calculator API hosted on APIMATIC</documentation>
+    <port name="Calculator_Port" binding="wsdl:APIMATIC_x0020_Calculator_Binding">
+      <soap:address location="https://examples.apimatic.io/apps/calculator" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>

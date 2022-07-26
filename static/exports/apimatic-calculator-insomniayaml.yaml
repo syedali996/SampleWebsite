@@ -1,0 +1,28 @@
+_type: export
+__export_format: 4
+__export_source: apimatic.transformer
+resources:
+- name: APIMATIC Calculator
+  _type: workspace
+  _id: wrk_b8006ba85dbc48b3982be1f02a030da6
+  description: Simple calculator API hosted on APIMATIC
+- name: Simple Calculator
+  _type: request_group
+  _id: fld_298dd734792a4ff1bba9fca41f488e0e
+  parentId: wrk_b8006ba85dbc48b3982be1f02a030da6
+  description: ''
+- name: Calculate
+  method: GET
+  url: https://examples.apimatic.io/apps/calculator/{operation}
+  parameters:
+  - name: x
+    value: '4'
+    disabled: false
+  - name: y
+    value: '5'
+    disabled: false
+  authentication: {}
+  _type: request
+  _id: req_aef2f1db8802460faab0f806bc735b56
+  parentId: fld_298dd734792a4ff1bba9fca41f488e0e
+  description: Calculates the expression using the specified operation.

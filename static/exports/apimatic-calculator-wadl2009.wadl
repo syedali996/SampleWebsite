@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:schemas="https://examples.apimatic.io/apps/calculator/schemas" xmlns="http://wadl.dev.java.net/2009/02">
+  <doc title="APIMATIC Calculator" xml:lang="en">Simple calculator API hosted on APIMATIC</doc>
+  <grammars>
+    <xs:schema xmlns:tns="https://examples.apimatic.io/apps/calculator/schemas" targetNamespace="https://examples.apimatic.io/apps/calculator/schemas" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="OperationType" type="schemas:OperationType" />
+      <xs:element name="response" type="xs:double" />
+      <xs:simpleType name="OperationType">
+        <xs:annotation>
+          <xs:documentation>Possible operators are sum, subtract, multiply, divide</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="SUM">
+            <xs:annotation>
+              <xs:documentation>Represents the sum operator</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="SUBTRACT">
+            <xs:annotation>
+              <xs:documentation>Represents the subtract operator</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="MULTIPLY">
+            <xs:annotation>
+              <xs:documentation>Represents the multiply operator</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="DIVIDE">
+            <xs:annotation>
+              <xs:documentation>Represents the divide operator</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </grammars>
+  <resources base="https://examples.apimatic.io/apps/calculator">
+    <resource id="_operation" path="/{operation}">
+      <param name="operation" style="template" default="" required="true">
+        <doc title="operation" xml:lang="en">The operator to apply on the variables</doc>
+        <option value="SUM">
+          <doc title="SUM" xml:lang="en">Represents the sum operator</doc>
+        </option>
+        <option value="SUBTRACT">
+          <doc title="SUBTRACT" xml:lang="en">Represents the subtract operator</doc>
+        </option>
+        <option value="MULTIPLY">
+          <doc title="MULTIPLY" xml:lang="en">Represents the multiply operator</doc>
+        </option>
+        <option value="DIVIDE">
+          <doc title="DIVIDE" xml:lang="en">Represents the divide operator</doc>
+        </option>
+      </param>
+      <method id="Calculate" name="GET">
+        <doc title="Calculate" xml:lang="en">Calculates the expression using the specified operation.</doc>
+        <request>
+          <param name="x" style="query" type="xsd:double" default="" required="true">
+            <doc title="x" xml:lang="en">The LHS value</doc>
+          </param>
+          <param name="y" style="query" type="xsd:double" default="" required="true">
+            <doc title="y" xml:lang="en">The RHS value</doc>
+          </param>
+        </request>
+        <response status="200">
+          <representation element="schemas:response" mediaType="application/json" />
+        </response>
+      </method>
+    </resource>
+  </resources>
+</application>

@@ -1,0 +1,85 @@
+{
+  "info": {
+    "name": "APIMATIC Calculator",
+    "_postman_id": "f7eae309-a718-4a4d-8ab3-27bb7848be13",
+    "description": "Simple calculator API hosted on APIMATIC",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Simple Calculator",
+      "description": "",
+      "item": [
+        {
+          "id": "99952b97-9491-45cf-aa4a-d97d9af0f823",
+          "name": "Calculate",
+          "request": {
+            "url": {
+              "protocol": "https",
+              "host": "examples.apimatic.io",
+              "path": [
+                "apps",
+                "calculator",
+                ":operation"
+              ],
+              "query": [
+                {
+                  "key": "x",
+                  "value": "4",
+                  "description": "The LHS value",
+                  "disabled": false
+                },
+                {
+                  "key": "y",
+                  "value": "5",
+                  "description": "The RHS value",
+                  "disabled": false
+                }
+              ],
+              "variable": [
+                {
+                  "id": "operation",
+                  "value": "MULTIPLY",
+                  "type": "string",
+                  "description": "The operator to apply on the variables"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false
+            },
+            "description": "Calculates the expression using the specified operation."
+          },
+          "response": [
+            {
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain",
+                  "disabled": false
+                }
+              ],
+              "body": "20",
+              "code": 200,
+              "name": "Response_200",
+              "id": "47eabdbf-f56a-41fe-a2bc-2130f4fa81e5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [],
+  "auth": {
+    "type": "noauth"
+  }
+}

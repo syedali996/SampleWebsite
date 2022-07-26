@@ -1,0 +1,54 @@
+#%RAML 1.0
+title: APIMATIC Calculator
+version: '1.0'
+baseUri: https://examples.apimatic.io/apps/calculator
+baseUriParameters: {}
+protocols:
+- HTTPS
+documentation:
+- title: APIMATIC Calculator
+  content: Simple calculator API hosted on APIMATIC
+/{operation}:
+  uriParameters:
+    operation:
+      required: true
+      example:
+        value: MULTIPLY
+      displayName: operation
+      description: The operator to apply on the variables
+      type: string
+      enum:
+      - SUM
+      - SUBTRACT
+      - MULTIPLY
+      - DIVIDE
+  get:
+    displayName: Calculate
+    description: Calculates the expression using the specified operation.
+    queryParameters:
+      x:
+        required: true
+        example:
+          value: 4
+        displayName: x
+        description: The LHS value
+        type: number
+        format: double
+      y:
+        required: true
+        example:
+          value: 5
+        displayName: y
+        description: The RHS value
+        type: number
+        format: double
+    responses:
+      '200':
+        description: Success
+        body:
+          text/plain:
+            example:
+              value: 20
+            displayName: response
+            type: number
+            format: double
